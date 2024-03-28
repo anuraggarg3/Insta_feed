@@ -3,18 +3,19 @@ import { Box } from '@mui/material';
 import Navbar from './Navbar';
 import Story from './Story';
 import Post from './Post'; 
+import Suggestions from './Suggestions';
 
 function Feed() {
   // Placeholder post data (would typically be fetched from an API)
   const [posts, setPosts] = useState([
     { 
-      username: 'coding_cat', 
+      username: 'user1', 
       profileImage: 'https://randomuser.me/api/portraits/women/90.jpg',
       contentImage: 'https://randomuser.me/api/portraits/women/90.jpg', 
       caption: 'This is a caption' 
     },
     { 
-        username: 'coding_cat', 
+        username: 'user1', 
         profileImage: 'https://randomuser.me/api/portraits/women/91.jpg',
         contentImage: 'https://randomuser.me/api/portraits/women/91.jpg', 
         caption: 'This is a caption' 
@@ -38,7 +39,7 @@ function Feed() {
 
       <Box sx={{ display: 'flex', justifyContent: 'center', marginTop: 5 }}>
         {/* Stories */}
-        <Box sx={{ display: 'flex', overflowX: 'auto', width: '600px' }}> 
+        <Box sx={{ display: 'flex', overflowX: 'auto' ,width: '900px', marginRight: 3 }}> 
           {storiesData.map((story) => (
             <Story key={story.username} image={story.image} username={story.username} />
           ))}
@@ -47,7 +48,7 @@ function Feed() {
 
       <Box sx={{ display: 'flex', justifyContent: 'center', marginTop: 5 }}>
         {/* Posts */}
-        <Box sx={{ width: '600px' }}>
+        <Box sx={{ width: '600px', marginRight: 3 }}> 
           {posts.map((post) => (
             <Post 
               key={post.username + post.caption}
@@ -57,7 +58,8 @@ function Feed() {
               caption={post.caption}
             />
           ))}
-        </Box>  
+        </Box> 
+        <Suggestions/> 
       </Box>
     </div>
   );
