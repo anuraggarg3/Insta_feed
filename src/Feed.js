@@ -11,13 +11,13 @@ function Feed() {
       username: 'coding_cat', 
       profileImage: 'https://randomuser.me/api/portraits/women/90.jpg',
       contentImage: 'https://randomuser.me/api/portraits/women/90.jpg', 
-      caption: 'Debugging my human... 😹 #coderlife' 
+      caption: 'This is a caption' 
     },
     { 
         username: 'coding_cat', 
         profileImage: 'https://randomuser.me/api/portraits/women/91.jpg',
         contentImage: 'https://randomuser.me/api/portraits/women/91.jpg', 
-        caption: 'Debugging my human... 😹 #coderlife' 
+        caption: 'This is a caption' 
       },
     // ... Add more post objects here
   ]);
