@@ -40,7 +40,7 @@ function Feed() {
         <Stack direction="row">
       <Navbar />
       <Stack direction="row">
-      <Stack sx={{ display: 'flex', marginTop: 5 }}>
+      <Stack sx={{ display: 'flex', marginTop: 5 ,marginLeft:5}}>
         {/* Stories */}
         <Box sx={{ display: 'flex',  marginRight: 0 }}> 
           {storiesData.map((story) => (

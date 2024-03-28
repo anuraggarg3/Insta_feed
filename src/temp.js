@@ -1,31 +1,32 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import {
+  AppBar,
   Box,
+  CssBaseline,
   Drawer,
   IconButton,
-  Toolbar,
-  Typography,
   List,
   ListItem,
   ListItemIcon,
   ListItemText,
+  Toolbar,
+  Typography,
+  useMediaQuery,
 } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 import HomeIcon from '@mui/icons-material/Home';
 import SearchIcon from '@mui/icons-material/Search';
 import ExploreIcon from '@mui/icons-material/Explore';
-import ReelsIcon from '@mui/icons-material/Reels';
+import ReelsIcon from '@mui/icons-material/Search';
 import MailIcon from '@mui/icons-material/Mail';
 import NotificationsNoneIcon from '@mui/icons-material/NotificationsNone';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline';
-import Story from './Story';
-import Post from './Post';
-import Suggestions from './Suggestions';
 
-function Feed() {
+function Navbar() {
   const [open, setOpen] = useState(false);
+  const isMobile = useMediaQuery('(max-width: 600px)'); // Adjust breakpoint as needed
 
   const handleDrawerOpen = () => {
     setOpen(true);
@@ -35,68 +36,65 @@ function Feed() {
     setOpen(false);
   };
 
+  // Close drawer on mobile if screen size changes
+  useEffect(() => {
+    if (isMobile) {
+      setOpen(false);
+    }
+  }, [isMobile]); 
+
   return (
     <div>
-      {/* Drawer for Left Sidebar */}
+      <CssBaseline />
+
+      {/* Responsive Navbar */}
+      <AppBar position="fixed" sx={{ width: '100%', zIndex: (theme) => theme.zIndex.drawer + 1 }}>
+        <Toolbar sx={{ display: 'flex', justifyContent: 'space-between' }}>
+          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRD085I1x7-eyqUBpSuasns5vln5Wq3bPpifRFSeafsdg&s" alt="Instagram Logo" style={{ height: '60px', width: '150px' }} />
+
+          <IconButton onClick={handleDrawerOpen} sx={{ display: { xs: 'block', md: 'none' } }}>
+            <MenuIcon />
+          </IconButton>
+          {/* Navigation icons displayed only on mobile */}
+          <Box sx={{ display: { xs: 'flex', md: 'none' } }}>
+            <IconButton>
+              <HomeIcon />
+            </IconButton>
+            <IconButton>
+              <SearchIcon />
+            </IconButton>
+            <IconButton>
+              <ExploreIcon />
+            </IconButton>
+            <IconButton>
+              <ReelsIcon />
+            </IconButton>
+          </Box>
+        </Toolbar>
+      </AppBar>
+
+      {/* Drawer for Left Sidebar (visible only on desktop) */}
       <Drawer
         variant="permanent"
         anchor="left"
-        open={open}
+        open={open && !isMobile}
       >
-        {/* Drawer Header (Optional) */}
-        <Toolbar sx={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-          <Typography variant="h6" noWrap component="div" sx={{ color: 'text.primary' }}>
-            Instagram
-          </Typography>
+        {/* Drawer Header */}
+        <Toolbar sx={{ display: 'flex', alignItems: 'center', justifyContent: 'flex-end' }}> 
           <IconButton onClick={handleDrawerClose}>
-            {<ChevronLeftIcon />}
+            <ChevronLeftIcon />
           </IconButton>
         </Toolbar>
 
         {/* Drawer Content (Your Navbar Items) */}
-        <List>
+        <List sx={{ marginTop: '25px' }}> 
           <ListItem button key="Home">
             <ListItemIcon>
               <HomeIcon />
             </ListItemIcon>
             <ListItemText primary="Home" />
           </ListItem>
-          <ListItem button key="Search">
-            <ListItemIcon>
-              <SearchIcon />
-            </ListItemIcon>
-            <ListItemText primary="Search" />
-          </ListItem>
-          <ListItem button key="Explore">
-            <ListItemIcon>
-              <ExploreIcon />
-            </ListItemIcon>
-            <ListItemText primary="Explore" />
-          </ListItem>
-          <ListItem button key="Reels">
-            <ListItemIcon>
-              <ReelsIcon />
-            </ListItemIcon>
-            <ListItemText primary="Reels" />
-          </ListItem>
-          <ListItem button key="Messages">
-            <ListItemIcon>
-              <MailIcon />
-            </ListItemIcon>
-            <ListItemText primary="Messages" />
-          </ListItem>
-          <ListItem button key="Notifications">
-            <ListItemIcon>
-              <NotificationsNoneIcon />
-            </ListItemIcon>
-            <ListItemText primary="Notifications" />
-          </ListItem>
-          <ListItem button key="Profile">
-            <ListItemIcon>
-              <AccountCircleIcon />
-            </ListItemIcon>
-            <ListItemText primary="Profile" />
-          </ListItem>
+          {/* ... other navbar items ... */}
           <ListItem button key="Create">
             <ListItemIcon>
               <AddCircleOutlineIcon />
@@ -105,28 +103,8 @@ function Feed() {
           </ListItem>
         </List>
       </Drawer>
-
-      {/* Main Feed Content */}
-      <Box sx={{ display: 'flex', flexDirection: 'column', paddingLeft: open ? '300px' : '0' }}>
-        {/* Main Feed Header (Optional) */}
-        <Toolbar sx={{ display: 'flex', justifyContent: 'space-between', padding: '10px 20px' }}>
-          <Typography variant="h6" noWrap component="div" sx={{ color: 'text.primary' }}>
-            Feed
-          </Typography>
-          <IconButton onClick={handleDrawerOpen}>
-            <MenuIcon />
-          </IconButton>
-        </Toolbar>
-
-        {/* Posts Section */}
-        <Box sx={{ padding: '20px' }}>
-          <Story />
-          <Post />
-          {/* ... More Posts ... */}
-        </Box>
-      </Box>
     </div>
   );
 }
 
-export default Feed;
+export default Navbar;
