@@ -75,6 +75,14 @@
       </Box>
       <Box sx={{ 
       position: 'fixed',
+      top: 0, 
+      width: '100%',
+      bgcolor: 'background.paper',
+      p: 1, 
+      display:{xs:"block",sm:"none"}
+    }}>fsdafdsa</Box>
+      <Box sx={{ 
+      position: 'fixed',
       bottom: 0, 
       width: '100%',
       bgcolor: 'background.paper',

@@ -1,11 +1,13 @@
 import React, { useState, useEffect } from 'react';
-import { Box ,Stack} from '@mui/material';
+import {useMediaQuery , Box ,Stack} from '@mui/material';
 import Navbar from './Navbar';
 import Story from './Story';
 import Post from './Post'; 
 import Suggestions from './Suggestions';
 
 function Feed() {
+  const isMobile = useMediaQuery('(max-width: 600px)');
+
   const [posts, setPosts] = useState([
     { 
         username: 'user1', 
@@ -31,8 +33,8 @@ function Feed() {
     { id: 2, username: 'user2', image: 'https://randomuser.me/api/portraits/women/91.jpg'},
     { id: 4, username: 'user3', image: 'https://randomuser.me/api/portraits/women/93.jpg'},
     { id: 5, username: 'user3', image: 'https://randomuser.me/api/portraits/women/94.jpg'},
-    { id: 6, username: 'user3', image: 'https://randomuser.me/api/portraits/women/95.jpg'},
-    { id: 6, username: 'user3', image: 'https://randomuser.me/api/portraits/women/96.jpg'},
+    // { id: 6, username: 'user3', image: 'https://randomuser.me/api/portraits/women/95.jpg'},
+    // { id: 6, username: 'user3', image: 'https://randomuser.me/api/portraits/women/96.jpg'},
 ];
 
   return (
@@ -40,14 +42,15 @@ function Feed() {
         <Stack direction="row">
       <Navbar />
       <Stack direction="row">
-      <Stack sx={{ display: 'flex', marginTop: 5 ,marginLeft:5}}>
+      <Stack sx={{ display: 'flex', marginTop: 5, marginLeft: isMobile ? 2 : 5 }}>
         {/* Stories */}
-        <Box sx={{ display: 'flex',  marginRight: 0 }}> 
+        <Box sx={{ display: 'flex',  marginRight: 0 ,width: isMobile ? '350px' : '600px',}}> 
           {storiesData.map((story) => (
             <Story key={story.username} image={story.image} username={story.username} />
           ))}
         </Box> 
-        <Box sx={{ width: '600px', marginRight: 3 }}> 
+        <Box sx={{ width: isMobile ? '350px' : '600px',
+                 marginRight: 2 }}> 
           {posts.map((post) => (
             <Post 
               key={post.username + post.caption}
