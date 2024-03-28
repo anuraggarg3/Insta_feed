@@ -1,13 +1,18 @@
 import React, { useState, useEffect } from 'react';
-import { Box } from '@mui/material';
+import { Box ,Stack} from '@mui/material';
 import Navbar from './Navbar';
 import Story from './Story';
 import Post from './Post'; 
 import Suggestions from './Suggestions';
 
 function Feed() {
-  // Placeholder post data (would typically be fetched from an API)
   const [posts, setPosts] = useState([
+    { 
+        username: 'user1', 
+        profileImage: 'https://randomuser.me/api/portraits/women/95.jpg',
+        contentImage: 'https://randomuser.me/api/portraits/women/95.jpg', 
+        caption: 'This is a caption' 
+      },
     { 
       username: 'user1', 
       profileImage: 'https://randomuser.me/api/portraits/women/90.jpg',
@@ -20,10 +25,7 @@ function Feed() {
         contentImage: 'https://randomuser.me/api/portraits/women/91.jpg', 
         caption: 'This is a caption' 
       },
-    // ... Add more post objects here
   ]);
-
-  // Placeholder stories data  
   const storiesData = [
   { id: 1, username: 'user1', image: "https://randomuser.me/api/portraits/women/90.jpg" },
     { id: 2, username: 'user2', image: 'https://randomuser.me/api/portraits/women/91.jpg'},
@@ -35,19 +37,16 @@ function Feed() {
 
   return (
     <div>
+        <Stack direction="row">
       <Navbar />
-
-      <Box sx={{ display: 'flex', justifyContent: 'center', marginTop: 5 }}>
+      <Stack direction="row">
+      <Stack sx={{ display: 'flex', marginTop: 5 }}>
         {/* Stories */}
-        <Box sx={{ display: 'flex', overflowX: 'auto' ,width: '900px', marginRight: 3 }}> 
+        <Box sx={{ display: 'flex',  marginRight: 0 }}> 
           {storiesData.map((story) => (
             <Story key={story.username} image={story.image} username={story.username} />
           ))}
         </Box> 
-      </Box>
-
-      <Box sx={{ display: 'flex', justifyContent: 'center', marginTop: 5 }}>
-        {/* Posts */}
         <Box sx={{ width: '600px', marginRight: 3 }}> 
           {posts.map((post) => (
             <Post 
@@ -59,8 +58,10 @@ function Feed() {
             />
           ))}
         </Box> 
-        <Suggestions/> 
-      </Box>
+      </Stack>
+        </Stack>
+<Suggestions/> 
+     </Stack>
     </div>
   );
 }

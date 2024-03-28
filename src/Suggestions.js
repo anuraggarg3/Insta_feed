@@ -3,19 +3,15 @@ import { Avatar, Box, Button, Typography } from '@mui/material';
 
 function Suggestions() {
   const [suggestions, setSuggestions] = useState([]);
-
-  // Fetch suggested users (In a real app, you would fetch this from your backend)
   useEffect(() => {
     const fetchSuggestions = async () => {
-      // Replace with your actual API endpoint or data source
       const sampleSuggestions = [
         { username: 'User1', name: 'User1', profileImage: 'https://randomuser.me/api/portraits/women/10.jpg' },
-        { username: 'User1', name: 'User1', profileImage: 'https://randomuser.me/api/portraits/women/11.jpg' },
-        { username: 'User1', name: 'User1', profileImage: 'https://randomuser.me/api/portraits/women/12.jpg' },
-        { username: 'User1', name: 'User1', profileImage: 'https://randomuser.me/api/portraits/women/13.jpg' },
-        // ...more suggestions 
+        { username: 'User2', name: 'User2', profileImage: 'https://randomuser.me/api/portraits/women/11.jpg' },
+        { username: 'User3', name: 'User3', profileImage: 'https://randomuser.me/api/portraits/women/12.jpg' },
+        { username: 'User4', name: 'User4', profileImage: 'https://randomuser.me/api/portraits/women/13.jpg' },
+        { username: 'User5', name: 'User5', profileImage: 'https://randomuser.me/api/portraits/women/14.jpg' },
       ];
-
       setSuggestions(sampleSuggestions);
     };
 
@@ -23,7 +19,8 @@ function Suggestions() {
   }, []);
 
   return (
-    <Box sx={{ width: 300, padding: 2, display:{xs:"none",sm:"block"} }}>
+    <Box sx={{marginTop:'60px', marginLeft:'10px', width: 300, padding: 5, display:{xs:"none",sm:"block"} }}>
+    {/* <Box sx={{ width: 300, padding: 2, display:{xs:"none",sm:"block"} }}> */}
       <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 2 }}>
         <Typography variant="body1" fontWeight="bold" color="text.secondary">
           Suggestions for you

@@ -11,7 +11,7 @@ function Story({ image, username }) {
       setOpen(false);
     };
   return (
-    <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', marginRight: 2 }}>
+    <Box sx={{ display: 'flex', flexDirection: 'column', marginRight: 2 }}>
       <Avatar 
         src={image} 
         alt={username}

@@ -46,7 +46,7 @@ function Post({ username, profileImage, contentImage, caption }) {
       };
     
   return (
-    <Card sx={{ maxWidth: 600, margin: '20px auto' }}>
+    <Box sx={{ flexDirection: 'column', marginRight: 2 }}>
       {/* Header */}
       <CardHeader
         avatar={<Avatar src={profileImage} alt={username} />}
@@ -118,7 +118,7 @@ function Post({ username, profileImage, contentImage, caption }) {
           {caption}
         </Typography>
       </Box>
-    </Card>
+    </Box>
   );
 }
 
