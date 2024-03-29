@@ -74,14 +74,21 @@
           </Toolbar>
       </Box>
       <Box sx={{ 
-      position: 'fixed',
-      top: 0, 
-      width: '100%',
-      bgcolor: 'background.paper',
-      p: 1, 
-      display:{xs:"block",sm:"none"}
-    }}>fsdafdsa</Box>
+  zIndex: 1200,
+  position: 'fixed',
+  top: 0, 
+  width: '100%',
+  bgcolor: 'background.paper',
+  p: 1,
+  display: 'flex',
+  justifyContent: 'center',
+  alignItems: 'center',
+  display: { xs: 'flex', sm: "none" }
+}}>
+  <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRD085I1x7-eyqUBpSuasns5vln5Wq3bPpifRFSeafsdg&s" alt="Instagram Logo" style={{ height: 23, width: 72}} />
+</Box>
       <Box sx={{ 
+          zIndex: 1200,
       position: 'fixed',
       bottom: 0, 
       width: '100%',
@@ -97,7 +104,12 @@
           <SearchIcon />
         </IconButton>
         <IconButton>
-          <ExploreIcon />
+          {/* <ExploreIcon /> */}
+          <AddCircleOutlineIcon />
+        </IconButton>
+        <IconButton>
+          {/* <ExploreIcon /> */}
+          <AccountCircleIcon   />
         </IconButton>
       </Box>
   </Box>
